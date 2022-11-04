@@ -21,6 +21,33 @@ async def sum_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = update.message.text
     print(msg)
     items = msg.split() # /sum 123 534543
-    x = int(items[1])
-    y = int(items[2])
+    x = float(items[1])
+    y = float(items[2])
     await update.message.reply_text(f'{x} + {y} = {x + y}')
+#
+async def minus_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    log(update, context)
+    msg = update.message.text
+    print(msg)
+    items = msg.split()
+    x = float(items[1])
+    y = float(items[2])
+    await update.message.reply_text(f'{x} - {y} = {x - y}')
+
+async def multiplication_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    log(update, context)
+    msg = update.message.text
+    print(msg)
+    items = msg.split()
+    x = float(items[1])
+    y = float(items[2])
+    await update.message.reply_text(f'{x} * {y} = {x * y}')
+
+async def division_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    log(update, context)
+    msg = update.message.text
+    print(msg)
+    items = msg.split()
+    x = float(items[1])
+    y = float(items[2])
+    await update.message.reply_text(f'{x} / {y} = {x / y}')
