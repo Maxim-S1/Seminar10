@@ -1,26 +1,27 @@
 import requests
 import json
-import UI
 
-y = input('Введите валюту, из которой хотите конвертировать (пример ввода: EUR, USD, GBP): ').strip()
-x = input('Введите валюту, в которую хотите конвертировать (пример ввода: EUR, USD, GBP: ').strip()
-amount = int(input('Введите сумму: '))
+def convert_val(mony1, mony2, sum):
+    url = f"https://api.apilayer.com/fixer/convert?to={mony1}&from={mony2}&amount={sum}"
 
-url = f"https://api.apilayer.com/fixer/convert?to={x}&from={y}&amount={amount}"
+    payload = {}
+    headers= {
+      "apikey": "byC3EE2DWwWE5LhTQO3pCDweOYaZyfLV"
+    }
 
-payload = {}
-headers= {
-  "apikey": "byC3EE2DWwWE5LhTQO3pCDweOYaZyfLV"
-}
+    response = requests.request("GET", url, headers = headers, data = payload)
 
-response = requests.request("GET", url, headers=headers, data = payload)
+    status_code = response.status_code
+    result = response.text
+    val_sum = json.loads(result)
+    res = round(val_sum['result'], 2)
+    return res
 
-status_code = response.status_code
-result = response.text
-val_sum = json.loads(result)
+    # print(val_sum['query'], sep=' ', end='\n')
 
-print(val_sum['query'], sep=' ', end='\n')
-print(val_sum['result'])
+    # print(f'В {amount} {y} {z} {x}')
+
+
 
 # {
 #   "date": "2018-02-22",
